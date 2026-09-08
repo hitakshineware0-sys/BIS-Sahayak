@@ -329,7 +329,7 @@ async function sendMessage() {
 
         const result =
             await fetch(
-                "http://127.0.0.1:8000/chat",
+                "https://bis-sahayak-ulk0.onrender.com/chat",
                 {
 
                     method: "POST",
