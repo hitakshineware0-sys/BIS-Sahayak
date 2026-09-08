@@ -329,7 +329,7 @@ async function sendMessage() {
 
         const result =
             await fetch(
-                "https://bis-sahayak-ulk0.onrender.com/chat",
+                "/api/chat",
                 {
 
                     method: "POST",
@@ -981,7 +981,7 @@ async function searchBISStandard(
 
         const result =
             await fetch(
-                "https://bis-sahayak-ulk0.onrender.com/chat",
+                "/api/chat",
                 {
 
                     method: "POST",
