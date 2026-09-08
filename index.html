@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BIS Sahayak - BIS Standards Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+    <link rel="icon" type="image/png" href="bis-logo1.png">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+
+        <!-- SIDEBAR HEADER -->
+
+        <div class="sidebar-header">
+
+            <div class="logo">
+                BIS
+            </div>
+
+            <div>
+
+                <h2>
+                    BIS Sahayak
+                </h2>
+
+                <p>
+                    BIS Standards Assistant
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- NEW CHAT -->
+
+        <button class="new-chat">
+            + New Chat
+        </button>
+
+
+        <!-- BIS SEARCH -->
+
+        <div class="sidebar-search">
+
+            <label>
+                🔎 Search BIS Standard
+            </label>
+
+            <div class="sidebar-search-box">
+
+                <input
+                    type="text"
+                    id="standardSearch"
+                    placeholder="e.g. IS 1106"
+                >
+
+                <button id="searchStandard">
+                    Search
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= LANGUAGE SELECTOR ================= -->
+
+        <div class="language-selector">
+
+            <label for="languageSelect">
+                🌐 Language
+            </label>
+
+            <select id="languageSelect">
+
+                <option value="English">
+                    English
+                </option>
+
+                <option value="Hindi">
+                    हिंदी
+                </option>
+
+                <option value="Marathi">
+                    मराठी
+                </option>
+
+                <option value="Bengali">
+                    বাংলা
+                </option>
+
+                <option value="Gujarati">
+                    ગુજરાતી
+                </option>
+
+                <option value="Tamil">
+                    தமிழ்
+                </option>
+
+                <option value="Telugu">
+                    తెలుగు
+                </option>
+
+                <option value="Kannada">
+                    ಕನ್ನಡ
+                </option>
+
+                <option value="Malayalam">
+                    മലയാളം
+                </option>
+
+                <option value="Punjabi">
+                    ਪੰਜਾਬੀ
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- CHAT HISTORY -->
+
+        <nav class="sidebar-menu">
+
+            <div
+                class="menu-item active"
+                data-page="history"
+            >
+                💬 Chat History
+            </div>
+
+
+            <div id="chatHistoryList">
+            </div>
+
+        </nav>
+
+
+        <!-- BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <div class="menu-item">
+                ⚙️ Settings
+            </div>
+
+            <div class="menu-item">
+                ❓ Help & Documentation
+            </div>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <h1>
+                BIS Sahayak
+            </h1>
+
+            <span>
+                BIS • Indian Standards
+            </span>
+
+        </header>
+
+
+
+        <!-- CHAT AREA -->
+
+        <section class="chat-area">
+
+            <div class="welcome">
+
+            <div class="bot-icon">
+                <img src="./bis-logo1.png" alt="BIS Sahayak Logo">
+            </div>
+
+                <h2>
+                    Hello! I'm BIS Sahayak 👋
+                </h2>
+
+                <p>
+                    Your intelligent assistant for BIS and Indian Standards.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- MESSAGE INPUT -->
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="messageInput"
+                placeholder="Ask anything about BIS or Indian Standards..."
+            >
+
+            <button id="sendButton">
+                Send
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
