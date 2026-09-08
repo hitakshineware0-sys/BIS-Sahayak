@@ -24,15 +24,19 @@ export default async function handler(req, res) {
             }
         );
 
-        const data = await response.json();
+        const text = await response.text();
 
-        return res.status(response.status).json(data);
+        console.log("Render status:", response.status);
+        console.log("Render response:", text);
+
+        return res.status(response.status).send(text);
 
     } catch (error) {
         console.error("Backend proxy error:", error);
 
         return res.status(500).json({
-            error: "Could not connect to BIS Sahayak backend."
+            error: "Proxy failed",
+            details: String(error)
         });
     }
 }
