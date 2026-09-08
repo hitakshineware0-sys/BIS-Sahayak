@@ -6,20 +6,28 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { question, history = [] } = req.body;
+        const body = req.body || {};
+
+        // Your frontend sends "message", not "question"
+        const question = body.message || body.question;
+        const history = body.history || [];
+        const language = body.language || "English";
 
         if (!question) {
             return res.status(400).json({
-                error: "Question is required"
+                error: "Message is required"
             });
         }
 
         const contents = [
             ...history.map(msg => ({
-                role: msg.role === "assistant" ? "model" : "user",
+                role:
+                    msg.role === "assistant"
+                        ? "model"
+                        : "user",
                 parts: [
                     {
-                        text: msg.content
+                        text: msg.content || ""
                     }
                 ]
             })),
@@ -46,15 +54,23 @@ export default async function handler(req, res) {
                         parts: [
                             {
                                 text:
-                                    "You are BIS Sahayak, an AI assistant for the Bureau of Indian Standards (BIS). " +
-                                    "Help users understand Indian Standards, BIS certification, compliance, manufacturers, MSMEs and related BIS information. " +
-                                    "Give clear and practical answers. " +
-                                    "Do not invent BIS standard numbers, certifications or requirements. " +
-                                    "If you are unsure, clearly say so."
+                                    `You are BIS Sahayak, an AI assistant for the Bureau of Indian Standards (BIS).
+
+Help users understand Indian Standards, BIS certification, compliance, manufacturers, MSMEs and related BIS information.
+
+Answer in ${language}.
+
+Give clear, practical and easy-to-understand answers.
+
+Do not invent BIS standard numbers, certifications or requirements.
+
+If you are unsure, clearly say so.`
                             }
                         ]
                     },
+
                     contents: contents,
+
                     generationConfig: {
                         temperature: 0.3,
                         maxOutputTokens: 1500
@@ -65,8 +81,16 @@ export default async function handler(req, res) {
 
         const data = await response.json();
 
+        console.log(
+            "Gemini status:",
+            response.status
+        );
+
         if (!response.ok) {
-            console.error("Gemini error:", data);
+            console.error(
+                "Gemini error:",
+                data
+            );
 
             return res.status(response.status).json({
                 error:
@@ -86,10 +110,13 @@ export default async function handler(req, res) {
         });
 
     } catch (error) {
-        console.error("Server error:", error);
+        console.error(
+            "Vercel function error:",
+            error
+        );
 
         return res.status(500).json({
-            error: "Something went wrong while processing your question."
+            error: String(error)
         });
     }
 }
